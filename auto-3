@@ -1,0 +1,27 @@
+
+#!/bin/sh
+clear
+figlet -cf small 'CheckRa1n' | lolcat -as 99
+sleep 2
+clear
+xdotol type "echo 'deb https://assets.checkra.in/debian /' |  tee -a /etc/apt/sources.list" && sleep 1;xdotool key Return
+sleep 3
+xdotool type " apt-key adv --fetch-keys https://assets.checkra.in/debian/archive.key" && sleep 2;xdotool key Return
+sleep 2
+xdotool type " apt update" && xdotool key Return
+sleep 2
+clear
+xdotool type " apt install checkra1n -y" && sleep 2;xdotool key Return
+sleep 2
+clear
+cd $HOME
+git clone https://github.com/mbusb/multibootusb
+cd multibootusb
+ chmod +x install.py
+ ./install.py
+sleep 2
+cd
+figlet -f small "all set on my end" | lolcat -as 99
+sleep 3
+xdotool keydown Ctrl key +d keyup Ctrl
+
